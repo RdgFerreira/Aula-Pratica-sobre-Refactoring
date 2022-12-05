@@ -24,11 +24,7 @@ public class Customer {
     Enumeration rentals = _rentals.elements();
     String result = "Rental Record for " + getName() + "\n";
     while (rentals.hasMoreElements()) {
-      double thisAmount = 0;
       Rental each = (Rental) rentals.nextElement();
-
-      // determine amounts for each line
-      thisAmount = each.getCharge();
 
       // add frequent renter points
       frequentRenterPoints++;
@@ -44,10 +40,11 @@ public class Customer {
         "\t" +
         each.getMovie().getTitle() +
         "\t" +
-        String.valueOf(thisAmount) +
+        String.valueOf(each.getCharge()) +
         "\n";
-      totalAmount += thisAmount;
+      totalAmount += each.getCharge();
     }
+
     // add footer lines
     result += "Amount owed is " + String.valueOf(totalAmount) + "\n";
     result +=
